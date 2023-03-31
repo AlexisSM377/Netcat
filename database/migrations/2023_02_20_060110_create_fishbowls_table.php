@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('ilumise_act');
             $table->integer('ph_act');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

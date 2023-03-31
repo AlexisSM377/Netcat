@@ -32,7 +32,43 @@
                 </div>
             </div>
     <div class="container-fluid">
-        <h1>hola desde index</h1>
+        <div class="card">
+            <div class="card-body">
+              <h4 class="card-title mb-0">Listado de Productos</h4>
+            </div>
+            <div class="table-responsive">
+              <table class="table customize-table mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-nowrap">Nombre</th>
+                    <th scope="col" class="text-nowrap">Descripcion</th>
+                    <th scope="col" class="text-nowrap">Precio</th>
+                    <th scope="col" class="text-nowrap">Existencia</th>
+                    <th scope="col" class="text-nowrap">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($products as $item)
+                        <tr>
+                        <td class="text-nowrap">{{$item->name}}</td>
+                        <td class="text-nowrap">{{$item->description}}</td>
+                        <td class="text-nowrap">{{$item->price}}</td>
+                        <td class="text-nowrap">{{$item->existence}}</td>
+                        <td class="text-nowrap">                                       
+                                <a class="btn btn-success " href="product/{{$item->id}}"  ><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-warning " href="product/{{$item->id}}/edit"  ><i class=" fas fa-edit"></i></a>
+                                <form action="product/{{$item->id}}" method="POST">
+                                    @csrf
+                                    @method("delete")  
+                                    <button class="btn btn-danger " type="submit"><i class="fas fa-trash"></i></button>
+                                </form>
+                        </td>
+                        </tr> 
+                    @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
     </div>
 
 @include('layouts.footer')

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('ilumise');
             $table->integer('ph');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

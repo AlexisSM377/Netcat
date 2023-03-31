@@ -46,7 +46,7 @@ Route::resource('kind',KindController::class);
 Route::resource('sex',SexController::class);
 Route::resource('diet',DietController::class);
 Route::resource('product',ProductController::class);
-Route::resource('food',FoodController::class);
+Route::resource('food',FoodController::class)->withTrashed();
 Route::resource('fish',FishController::class);
 Route::resource('expedient',ExpedientController::class);
 

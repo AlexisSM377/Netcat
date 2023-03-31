@@ -26,6 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('food_id');
             $table->foreign('food_id')->references('id')->on('food');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

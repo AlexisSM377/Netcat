@@ -18,6 +18,9 @@ class productFactory extends Factory
     {
         return [
             'name' => fake()->randomElement(['hojuelas para peces','bolitas nutritivas','alimento proteico']),
+            'description'=>fake()->text($maxNbChars = 20),
+            'price'=>fake()->numberBetween(500, 2000),
+            'existence'=>fake()->numberBetween(20, 100),
         ];
     }
 }
