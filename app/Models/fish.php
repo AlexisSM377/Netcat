@@ -20,5 +20,20 @@ class fish extends Model
         'food_id',
         ];
 
-    
+        public function sex()
+        {
+            return $this->hasOne(sex::class, 'id', 'sex_id');
+        }
+        public function fishbowl()
+        {
+            return $this->hasOne(fishbowl::class, 'id', 'fishbowl_id');
+        }
+        public function kind()
+        {
+            return $this->hasOne(kind::class, 'id', 'kind_id');
+        }
+        public function food()
+        {
+            return $this->hasOne(food::class, 'id', 'food_id');
+        }
 }

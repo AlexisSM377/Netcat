@@ -19,4 +19,9 @@ class fishbowl extends Model
             'ilumise_act',
             'ph_act',
     ];
+    
+    public function fish()
+    {
+        return $this->belongsTo(fish::class, 'fish_id', 'id');
+    }
 }

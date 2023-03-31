@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\diet;
 use App\Models\food;
+use App\Models\product;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
@@ -26,7 +28,9 @@ class FoodController extends Controller
      */
     public function create()
     {
-        return view('food.add');
+        $diets = diet::all();
+        $products = product::all(); 
+        return view('food.add', compact('diets', 'products'));
     }
 
     /**
@@ -37,7 +41,8 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        food::create($request->all());
+        return redirect('food')->with('message','Se ha creado correctamente');
     }
 
     /**
@@ -48,7 +53,8 @@ class FoodController extends Controller
      */
     public function show($id)
     {
-        //
+        $food = food::findOrFail($id);
+        return view('food.show', compact('food'));
     }
 
     /**
@@ -59,7 +65,10 @@ class FoodController extends Controller
      */
     public function edit($id)
     {
-        //
+        $food = food::findOrFail($id);
+        $diets = diet::all();
+        $products = product::all(); 
+        return view('food.edit', compact('food','diets', 'products'));
     }
 
     /**
@@ -71,7 +80,9 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $food = food::findOrFail($id);
+        $food->update($request->all());
+        return redirect('food')->with('message','Se ha creado correctamente');
     }
 
     /**
@@ -82,6 +93,8 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $food = food::findOrFail($id);
+        $food->delete();
+        return redirect('food')->with('danger','Eliminado correctamente ');
     }
 }

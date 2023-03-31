@@ -11,13 +11,13 @@
     <div class="page-breadcrumb">
       <div class="row">
         <div class="col-md-5 align-self-center">
-          <h3 class="page-title">Form Validation</h3>
+          <h3 class="page-title">Productos</h3>
           <div class="d-flex align-items-center">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Usarios</a></li>
+                <li class="breadcrumb-item"><a href="#">Productos</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Crear Usuarios
+                  Registrar Productos
                 </li>
               </ol>
             </nav>

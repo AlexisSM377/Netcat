@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\fish;
+use App\Models\fishbowl;
+use App\Models\food;
+use App\Models\kind;
+use App\Models\sex;
 use Illuminate\Http\Request;
 
 class FishController extends Controller
@@ -13,7 +18,8 @@ class FishController extends Controller
      */
     public function index()
     {
-        return view('fish.index');
+        $fishes = fish::all();
+        return view('fish.index',compact('fishes'));
     }
 
     /**
@@ -23,7 +29,11 @@ class FishController extends Controller
      */
     public function create()
     {
-        return view('fish.add');
+        $sexs = sex::all();
+        $fishbowls = fishbowl::all(); 
+        $kinds = kind::all(); 
+        $foods = food::all();
+        return view('fish.add', compact('sexs', 'fishbowls','kinds','foods'));
     }
 
     /**
@@ -34,7 +44,8 @@ class FishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        fish::create($request->all());
+        return redirect('fish')->with('message','Se ha creado correctamente');
     }
 
     /**
@@ -45,7 +56,8 @@ class FishController extends Controller
      */
     public function show($id)
     {
-        //
+        $fish = fish::findOrFail($id);
+        return view('fish.show', compact('fish'));
     }
 
     /**
@@ -56,7 +68,12 @@ class FishController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sexs = sex::all();
+        $fishbowls = fishbowl::all(); 
+        $kinds = kind::all(); 
+        $foods = food::all();
+        $fish = fish::findOrFail($id);
+        return view('fish.edit', compact('fish','sexs', 'fishbowls','kinds','foods'));
     }
 
     /**
@@ -79,6 +96,8 @@ class FishController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $fish = fish::findOrFail($id);
+        $fish->delete();
+        return redirect('fish')->with('danger','Eliminado correctamente ');
     }
 }

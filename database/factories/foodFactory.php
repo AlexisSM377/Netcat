@@ -17,6 +17,7 @@ class foodFactory extends Factory
     public function definition()
     {
         return [
+            'name'=> fake()->randomElement(['Comidac 1','Comida 2','Comida 3']),
             'diet_id' =>fake()->numberBetween(1, 10),
             'product_id' =>fake()->numberBetween(1, 10),
         ];

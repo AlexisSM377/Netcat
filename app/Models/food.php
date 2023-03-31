@@ -12,6 +12,7 @@ class food extends Model
     use SoftDeletes;
     
     protected $fillable = [
+        'name',
         'diet_id',
         'product_id',
         ];
@@ -23,5 +24,9 @@ class food extends Model
     public function diet()
     {
         return $this->hasOne(diet::class,'id', 'diet_id');
+    }
+    public function fish()
+    {
+        return $this->belongsTo(fish::class, 'fish_id', 'id');
     }
 }

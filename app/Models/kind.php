@@ -14,4 +14,9 @@ class kind extends Model
     protected $fillable = [
         'name',
         ];
+        
+    public function fish()
+    {
+        return $this->belongsTo(fish::class, 'fish_id', 'id');
+    }
 }
