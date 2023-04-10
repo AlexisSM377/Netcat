@@ -59,6 +59,47 @@
                       </select>
                   </div>
                 </div>
+                    <div class="container-fluid">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Estados</label>
+            <select class="form-select estado" name="state_id" id="mySelectEstado" aria-label="Default select example">
+                <option selected>Selecciona un Estado</option>
+                @foreach ($estados as $estado)
+                    <option value="{{$estado->id}}">{{$estado->nombre}}</option>
+                @endforeach
+              </select>
+          </div>
+        
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Municipios</label>
+            <select class="form-select" name="township_id" id="mySelectMunicipio" aria-label="Default select example">
+                
+            </select>
+          </div>
+
+    </div>
+
+@include('layouts.footer')
+
+<script >
+    const estadoSelect = document.querySelector('.estado');
+    const municipioSelect = document.getElementById('mySelectMunicipio');
+    estadoSelect.addEventListener('change', (event) =>  {
+        let id = document.getElementById("mySelectEstado").value
+        fetch('http://127.0.0.1:8000/municipios-estados/' +id)
+        .then((response) => response.json())
+        .then((json) => this.generarmunicipios(json));
+    });
+
+    function generarmunicipios(data){
+        data.forEach(function(element) {
+            let opcion = document.createElement('option')
+            opcion.value = element.id
+            opcion.text = element.nombre
+            municipioSelect.add(opcion)
+        })
+    }
+</script>
                 <button class="btn btn-info rounded-pill px-4 mt-3" type="submit">
                   Guadar
                 </button>

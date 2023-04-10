@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 Use App\Models\user;
 use App\Models\typeuser;
+use App\Models\Estado;
+use App\Models\Municipio;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -23,8 +25,9 @@ class UserController extends Controller
     public function create()
     {
         $typeusers = typeuser::all('id','name');
+        $estados = estado::all('id','nombre');
         // $users = user::all();$users = user::all();
-        return view('user.add', compact('typeusers'));
+        return view('user.add', compact('typeusers','estados'));
     }
 
     /**
@@ -35,6 +38,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        return $request;
         $input=$request->all();
         user::create($input);
         return redirect('user')->with('message','Se ha creado correctamente');
@@ -61,6 +66,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $typeusers = typeuser::all('id','name');
+        
         $users = user::find($id);
         return view('user.edit',compact('typeusers'))->with('users', $users);
     }

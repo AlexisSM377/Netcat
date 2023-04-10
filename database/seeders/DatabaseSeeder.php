@@ -25,6 +25,15 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         
+        
+        Artisan::call('key:generate');
+        Schema::disableForeignKeyConstraints();
+        $this->call([
+            EstadosSeeder::class,
+            MunicipiosSeeder::class
+        ]);
+        Schema::enableForeignKeyConstraints();
+
         \App\Models\typeuser::factory(10)->create();
         \App\Models\user::factory(10)->create();
          \App\Models\spec::factory(10)->create();
@@ -37,15 +46,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\food::factory(10)->create();
          \App\Models\fish::factory(10)->create();
          \App\Models\expedient::factory(10)->create();
-        
 
-        Artisan::call('key:generate');
-        Schema::disableForeignKeyConstraints();
-        $this->call([
-            EstadosSeeder::class,
-            MunicipiosSeeder::class
-        ]);
-        Schema::enableForeignKeyConstraints();
     }
     
 }

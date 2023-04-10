@@ -17,5 +17,13 @@ class user extends Model
         'name',
         'email',
         'password',
+        'state_id',
+        'township_id',
+        'address',
         ];
+    
+        public function township()
+        {
+            return $this->belongsTo(township::class, 'state_id', 'id');
+        }
 }

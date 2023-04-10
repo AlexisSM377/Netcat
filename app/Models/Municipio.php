@@ -14,7 +14,7 @@ class Municipio extends Model
      *
      * @var string
      */
-    protected $table = 'municipios';
+    protected $table = 'townships';
 
     /**
      * Llave primaria a utilizar.

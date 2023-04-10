@@ -14,7 +14,7 @@ class Estado extends Model
      *
      * @var string
      */
-    protected $table = 'estados';
+    protected $table = 'states';
 
     /**
      * Llave primaria a utilizar.
@@ -30,6 +30,7 @@ class Estado extends Model
      */
     protected $fillable = [
         'nombre'
+
     ];
 
     /**
@@ -55,8 +56,5 @@ class Estado extends Model
     /**
      * Relaciones entre modelos uno a muchos 
      */
-    public function municipios()
-    {
-        return $this->hasMany(Municipio::class, 'id_estado', 'id');
-    }
+   
 }

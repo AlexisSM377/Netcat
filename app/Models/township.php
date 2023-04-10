@@ -59,4 +59,8 @@ class township extends Model
     {
         return $this->hasOne(state::class, 'id', 'state_id');
     }
+    public function users()
+    {
+        return $this->hasMany(user::class, 'id', 'township_id');
+    }
 }
