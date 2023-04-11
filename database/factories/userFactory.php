@@ -22,6 +22,7 @@ class userFactory extends Factory
                 'name' => fake()->name(),
                 'email' => fake()->unique()->safeEmail(),
                 'password' => fake()->randomElement(['12345678','87654321']), // password
+                'state_id' =>fake()->numberBetween(1, 5),
                 'township_id' =>fake()->numberBetween(1, 5),
                 'address' => fake()->randomElement(['mi casa','mi otra casa']), // password
 

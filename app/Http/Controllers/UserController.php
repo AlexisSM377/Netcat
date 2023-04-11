@@ -39,7 +39,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        return $request;
+       
         $input=$request->all();
         user::create($input);
         return redirect('user')->with('message','Se ha creado correctamente');

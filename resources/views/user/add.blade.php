@@ -76,6 +76,10 @@
                 
             </select>
           </div>
+          <div class="col-md-4 mb-3">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" class="form-control" id="direccion" name="address"  required="">
+                  </div>
 
     </div>
 
