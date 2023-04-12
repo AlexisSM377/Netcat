@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\expedient;
 
 class ExpedientController extends Controller
 {
@@ -13,7 +14,8 @@ class ExpedientController extends Controller
      */
     public function index()
     {
-        return view('expedient.index');
+        $expedients = expedient::all();
+        return view('expedient.index', compact('expedients'));
     }
 
     /**
